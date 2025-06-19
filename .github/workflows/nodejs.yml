@@ -24,4 +24,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - run: npm install
+
+    - name: Corrigir permissões do Jest (Unix)
+      if: runner.os != 'Windows'
+      run: chmod +x ./node_modules/.bin/jest
+
     - run: npm test
